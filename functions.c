@@ -40,10 +40,13 @@ void pall(stack_t **head, unsigned int line_number)
 	stack_t *h = *head;
 	(void)line_number;
 
-	while (h)
+	if (head || *head)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		while (h)
+		{
+			printf("%d\n", h->n);
+			h = h->next;
+		}
 	}
 }
 /**
