@@ -1,5 +1,20 @@
 #include "monty.h"
 char *token;
+
+void superhot(stack_t **head)
+{
+	stack_t *tmp;
+
+	if (head == NULL)
+		return;
+	while ((*head) != NULL)
+	{
+		tmp = (*head);
+		(*head) = (*head)->next;
+		free(tmp);
+	}
+}
+
 /**
  * main - Reads a monty file to be excecuted as intended
  * @argc: The number of arguments
@@ -29,7 +44,7 @@ int main(int argc, char **argv)
 		compare(line_number, buffer, &head);
 		line_number++;
 	}
-	free(head);
+	superhot(&head);
 	free(buffer);
 	fclose(fd);
 	return (0);
